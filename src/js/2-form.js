@@ -13,7 +13,17 @@ form.addEventListener('input', e => {
 
 form.addEventListener('submit', e => {
   e.preventDefault();
-  console.log(formData);
+
+  const email = form.elements.email.value.trim();
+  const message = form.elements.message.value.trim();
+
+  if (!email || !message) {
+    alert('Будь ласка, заповніть усі поля перед відправкою.');
+    return;
+  }
+
+  console.log({ email, message });
+
   form.reset();
   localStorage.removeItem(STORAGE_KEY);
   formData = {};
